@@ -1,0 +1,299 @@
+<%- include('../partials/header') %>
+
+    <!-- <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="path/to/bootstrap.min.css"> -->
+
+    <!-- <title>Your Form</title>
+    </head>
+
+    <body>
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-6">
+                    <form action="/manageAddress" method="POST">
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group required">
+                                <label for="InputName">First Name <sup>*</sup> </label>
+                                <input required name="firstName" type="text" class="form-control" id="InputName"
+                                    placeholder="First Name" />
+                            </div>
+
+                            <div class="form-group required">
+                                <label for="InputLastName">Last Name <sup>*</sup> </label>
+                                <input required name="lastName" type="text" class="form-control" id="InputLastName"
+                                    placeholder="Last Name" />
+                            </div>
+
+                            <div class="form-group required">
+                                <label for="InputAddress">Address- Line 1 <sup>*</sup> </label>
+                                <input required name="addressLine1" type="text" class="form-control" id="InputAddress"
+                                    placeholder="Address" />
+                            </div>
+                            <div class="form-group">
+                                <label for="InputAddress2">Address- Line 2 <sup>*</sup> </label>
+                                <input required name="addressLine2" type="text" class="form-control" id="InputAddress2"
+                                    placeholder="Address" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number<sup>*</sup> </label>
+                                <input required name="phone" type="text" class="form-control" id="phone"
+                                    placeholder="Phone Number" />
+                            </div>
+                            <div class="form-group required">
+                                <label for="addressAlias">Please assign an address title for future reference.
+                                    <sup>*</sup></label>
+                                <input required type="text" value="My address" name="addressTitle" class="form-control"
+                                    id="addressAlias" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-12 col-xs-12 clearfix">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-map-marker"></i> Save Address
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+    </body>
+
+    </html> -->
+
+    <main class="main">
+        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+            <div class="container">
+                <h1 class="page-title">Add New Adress<span>DriveStyle</span></h1>
+            </div>
+            <!-- End .container -->
+        </div>
+        <!-- End .page-header -->
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/productList">Shop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Manage Address</li>
+                </ol>
+            </div>
+            <!-- End .container -->
+        </nav>
+        <!-- End .breadcrumb-nav -->
+
+        <!-- ======================================================================================================== -->
+
+        <!-- ======================================================================================================= -->
+
+        <div class="page-content">
+            <div class="checkout">
+                <div class="container">
+                    <div class="checkout-discount"></div>
+                    <!-- End .checkout-discount -->
+                    <form action="/manageAddress" method="POST" id="addAdrress">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h2 class="checkout-title">Add Adreess</h2>
+                                <!-- End .checkout-title -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>First Name *</label>
+                                        <input type="text" class="form-control" required id="InputName"
+                                            pattern="[a-zA-Z0-9]+" placeholder="First Name" name="firstName" />
+                                    </div>
+                                    <!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6">
+                                        <label>Last Name *</label>
+                                        <input type="text" class="form-control" name="lastName" id="InputName"
+                                            placeholder="Last Name" required />
+                                    </div>
+                                    <!-- End .col-sm-6 -->
+                                </div>
+                                <!-- End .row -->
+
+                                <label>Street address *</label>
+                                <!-- <input type="text" class="form-control" placeholder="House number and Street name"
+                                    required> -->
+                                <input type="text" name="addressLine1" id="InputAddress" class="form-control"
+                                    placeholder="Appartments, suite, unit etc ..." required />
+
+                                <label>State / County *</label>
+                                <!-- <input type="text" class="form-control" placeholder="House number and Street name"
+                                    required> -->
+                                <input type="text" name="addressLine2" id="InputAddress" class="form-control"
+                                    placeholder="district, state, unit etc ." required />
+
+                                <div class="row">
+                                    <label for="addressAlias">Please assign an address title for future reference.
+                                        <sup>*</sup></label>
+                                    <input required type="text" value="My address" name="addressTitle"
+                                        class="form-control" id="addressAlias" />
+                                </div>
+                            </div>
+                            <!-- End .row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Postcode / ZIP *</label>
+                                    <input type="text" class="form-control" id="postcode" name="postcode"
+                                        placeholder="Postcode" required />
+                                </div>
+                                <!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    <label>Phone *</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                        placeholder="Phone Number" required />
+                                </div>
+                                <!-- End .col-sm-6 -->
+
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <!-- End .col-lg-9 -->
+                        </div>
+                        <!-- End .row -->
+                    </form>
+
+                    <div class="col-lg-12 clearfix">
+                        <ul class="pager">
+                            <li class="previous pull-right">
+                                <a href="/"> <i class="fa fa-home"></i> Go to Shop </a>
+                            </li>
+                            <!-- <li class="next pull-left"><a href="/account">&larr; Back to My Account</a></li> -->
+                        </ul>
+                    </div>
+                    <!-- <aside>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="d-flex flex-wrap align-items-center">
+                    <a href="/manageAdrressPage" class="btn btn-success btn-sm rounded mr-2 mb-2">Add Adresss</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</aside> -->
+                    <div class="col-lg-12 clearfix mt-4">
+                        <ul class="pager">
+                            <li class="previous pull-right"><a href="/"> <i class="fa fa-home"></i> Go to Shop </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End .container -->
+            </div>
+            <!-- End .checkout -->
+        </div>
+        <!-- End .page-content -->
+    </main>
+    <!-- End .main -->
+
+
+  
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/additional-methods.min.js"></script>
+    <script>
+
+
+        $.validator.addMethod("noWhitespace", function (value, element) {
+            return value.trim() !== ""; // Check if the trimmed value is not empty
+        }, "Please enter a valid value.");
+
+        $("#addAdrress").validate({
+            rules: {
+                firstName: {
+                    required: true,
+                    noWhitespace: true, // Apply custom validation rule
+                    pattern: /^[a-zA-Z]+$/,
+                    minlength: 2,
+                    maxlength: 20,
+                },
+                lastName: {
+                    required: true,
+                    noWhitespace: true, // Apply custom validation rule
+                    pattern: /^[a-zA-Z0]+$/,
+                    minlength: 2,
+                    maxlength: 20,
+                },
+                addressLine1: {
+                    required: true,
+                    noWhitespace: true, // Apply custom validation rule
+                    
+                },
+                addressLine2: {
+                    required: true,
+                    noWhitespace: true, // Apply custom validation rule
+                    
+                },
+                addressTitle: {
+                    required: true,
+                    noWhitespace: true, // Apply custom validation rule
+                    minlength: 2,
+                    maxlength: 50,
+                },
+                phone: {
+                    required: true,
+                    digits: true,
+                    minlength: 10,
+                    maxlength: 10,
+                },
+                postcode: {
+                    required: true,
+                    digits: true,
+                    minlength: 5,
+                    maxlength: 6,
+                },
+            },
+            messages: {
+                firstName: {
+                    required: "Please enter your first name",
+                    noWhitespace: "First name cannot be empty or contain only spaces",
+                    pattern: "First name can only contain letters",
+                    minlength: "First name must be at least 2 characters long",
+                    maxlength: "First name must not exceed 20 characters",
+                },
+                lastName: {
+                    required: "Please enter your last name",
+                    noWhitespace: "Last name cannot be empty or contain only spaces",
+                    pattern: "Last name can only contain letters and numbers",
+                    minlength: "Last name must be at least 2 characters long",
+                    maxlength: "Last name must not exceed 20 characters",
+                },
+                addressTitle: {
+                    minlength: "Address title must be at least 2 characters long",
+                    maxlength: "Address title cannot exceed 50 characters",
+                },
+                phone: {
+                    required: "Please enter your phone number",
+                    digits: "Please enter only digits",
+                    minlength: "Phone number must be 10 digits long",
+                    maxlength: "Phone number must be 10 digits long",
+                },
+                postcode: {
+                    required: "Please enter your postcode",
+                    digits: "Please enter only digits",
+                    minlength: "Postcode must be 5 to 6 digits long",
+                    maxlength: "Postcode must be 5 to 6 digits long",
+                },
+            },
+        });
+
+    </script>.
+
+
+
+    <%- include('../partials/footer') %>

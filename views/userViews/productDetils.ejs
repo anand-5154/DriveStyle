@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+    <style>
+        .zoom-container {
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .zoom-img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+        }
+
+        /* Scale up the image when hovered */
+        .zoom-container:hover .zoom-img {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">Product Details<span>Shop</span></h1>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+        <div class="container d-flex align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/productList">Products</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Default</li>
+            </ol>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="container">
+            <div class="product-details-top">
+                <div class="row">
+                    <!-- Product Gallery Column -->
+                    <div class="col-md-6">
+                        <div class="product-gallery product-gallery-vertical">
+                            <div class="row">
+                                <figure class="product-main-image">
+                                    <div class="zoom-container">
+                                        <img id="disp-img" 
+                                             src="/upload/<%= currentProduct.productImage1 %>" 
+                                             class="zoom-img" alt="product image" />
+                                    </div>
+                                    <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                        <i class="icon-arrows"></i>
+                                    </a>
+                                </figure>
+
+                                <div id="disp-img-thumbnails" class="product-image-gallery">
+                                    <a class="product-gallery-item active" href="#"
+                                       data-image="/upload/<%= currentProduct.productImage1 %>"
+                                       onclick="changeImg(this)">
+                                        <img src="/upload/<%= currentProduct.productImage1 %>" alt="product side">
+                                    </a>
+                                    <a class="product-gallery-item" href="#"
+                                       data-image="/upload/<%= currentProduct.productImage2 %>"
+                                       onclick="changeImg(this)">
+                                        <img src="/upload/<%= currentProduct.productImage2 %>" alt="product cross">
+                                    </a>
+                                    <a class="product-gallery-item" href="#"
+                                       data-image="/upload/<%= currentProduct.productImage3 %>"
+                                       onclick="changeImg(this)">
+                                        <img src="/upload/<%= currentProduct.productImage3 %>" alt="product with model">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Details Column -->
+                    <div class="col-md-6">
+                        <div class="product-details">
+                            <h1 class="product-title"><%= currentProduct.productName %></h1>
+
+                            <div class="product-price">
+                                ₹ <%= currentProduct.productPrice %>
+                            </div>
+
+                            <div class="product-content">
+                                <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue.</p>
+                            </div>
+
+                            <div class="details-filter-row details-row-size">
+                                <div class="product-details-quantity">
+                                    <span id="stockMessage" style="color: red;"></span>
+                                </div>
+                            </div>
+
+                            <div class="product-details-action">
+                                <% if(currentProduct.productStock <= 0) { %>
+                                    <p style="color: red;">Out of stock</p>
+                                <% } else { %>
+                                    <a href="/cart/<%= currentProduct._id %>" class="btn-product btn-cart" onclick="addToCart()">
+                                        <span>Add to cart</span>
+                                    </a>
+                                <% } %>
+                                <button 
+                                            class="btn btn-outline-danger btn-sm" 
+                                            onclick="addToWishlist('<%= currentProduct._id %>')">
+                                            <i class="bi bi-heart"></i> Add to Wishlist
+                                            </button>
+
+                                                <script>
+                                                    // Function to add product to wishlist
+                                                    function addToWishlist(productId) {
+                                                      fetch(`/add-to-wishlist/${productId}`, {
+                                                        method: 'POST',
+                                                      })
+                                                      .then(response => response.json())
+                                                      .then(data => {
+                                                        if (data.success) {
+                                                          alert('Product added to wishlist!');
+                                                          location.reload(); // Reload the page to show the updated wishlist
+                                                        } else {
+                                                          alert('Error adding to wishlist');
+                                                        }
+                                                      });
+                                                    }
+                                                  </script>
+
+                            </div>
+
+                            <div class="product-details-footer">
+                                <div class="product-cat">
+                                    <span>Category:</span>
+                                    <a href="#"><%= currentProduct.parentCategory %></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-details-tab">
+                <ul class="nav nav-pills justify-content-center" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping & Returns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+                        <div class="product-desc-content">
+                            <h3>Product Information</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="col-lg-12 clearfix mt-4">
+                <ul class="pager">
+                    <li class="previous pull-right"><a href="/"> <i class="fa fa-home"></i> Go to Shop </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function changeImg(clickedImg) {
+        let image = document.getElementById("disp-img");
+        image.src = clickedImg.getAttribute('data-image');
+    }
+
+    function addToCart() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Item Added to Cart',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
+    // JavaScript for Dynamic Zoom Origin
+    document.querySelector('.zoom-container').addEventListener('mousemove', function (e) {
+        const zoomImg = e.currentTarget.querySelector('.zoom-img');
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Get the mouse position within the container
+        const y = e.clientY - rect.top;
+
+        zoomImg.style.transformOrigin = `${x}px ${y}px`; // Set the transform origin
+    });
+
+    document.querySelector('.zoom-container').addEventListener('mouseleave', function (e) {
+        const zoomImg = e.currentTarget.querySelector('.zoom-img');
+        zoomImg.style.transformOrigin = 'center'; // Reset origin when mouse leaves
+    });
+</script>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

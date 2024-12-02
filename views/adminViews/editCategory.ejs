@@ -1,0 +1,156 @@
+<%- include('../adminPartials/header') %>
+    <main class="main-wrap">
+       
+        <section class="content-main">
+
+            <div class="card mb-4">
+
+
+            </div> <!-- card end// -->
+
+
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <head>
+                <meta charset="UTF-8">
+                <title>Edit Category</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            </head>
+
+            <body>
+                <div class="container mt-5">
+                    <h2>Edit Category</h2>
+                    <form   id="editCategoryForm" action="/editCategories/<%=data._id%>" method="POST" class="mt-4">
+                        <div class="form-group">
+                            <label for="categoriesName">Category Name</label>
+                            <input type="text" class="form-control" id="categoriesName" value="<%=data.categoryName%>" name="categoriesName" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="categoriesDescription">Category Description</label>
+                            <textarea class="form-control" id="categoriesDescription" rows="3" name="categoriesDescription"><%=data.categoryDescription%></textarea>
+                        </div>
+                
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+                
+
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            </body>
+
+            </html>
+
+
+
+
+
+
+
+
+
+
+           
+        </section> <!-- content-main end// -->
+        
+    </main>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/additional-methods.min.js"></script>
+    <script>
+        $.validator.addMethod("noWhitespace", function (value, element) {
+            return value.trim() !== ""; // Check if the trimmed value is not empty
+        }, "Please enter a valid value.");
+    
+        $("#editCategoryForm").validate({
+            rules: {
+                categoriesName: {
+                    required: true,
+                    noWhitespace: true, // Apply custom validation rule
+                    pattern: /^[a-zA-Z]+$/,
+                    minlength: 2,
+                    maxlength: 20,
+                },
+                categoriesDescription: {
+                    required: true,
+                    noWhitespace: true, // Apply custom validation rule
+                    pattern: /^[a-zA-Z]+$/,
+                    minlength: 2,
+                    maxlength: 200,
+                },
+            },
+            messages: {
+                categoriesName: {
+                    required: "Please enter your correct name",
+                    noWhitespace: "First name cannot be empty or contain only spaces",
+                    pattern: "First name can only contain letters",
+                    minlength: "First name must be at least 2 characters long",
+                    maxlength: "First name must not exceed 20 characters",
+                },
+                categoriesDescription: {
+                    required: "Please enter your Description name",
+                    noWhitespace: "Last name cannot be empty or contain only spaces",
+                    minlength: "Last name must be at least 2 characters long",
+                    maxlength: "Last name must not exceed 200 characters",
+                },
+            }
+        });
+    </script>
+    
+
+
+
+
+
+
+
+<!-- 
+    <script>
+        function displayImage1() {
+            const reader = new FileReader()
+            reader.onload = () => {
+                preview1.src = reader.result
+            }
+            const file = document.querySelector("#productImage1").files[0];
+            if (file) {
+                preview1.style.display = 'block'
+                reader.readAsDataURL(file)
+            }
+        }
+        function displayImage2() {
+            const reader = new FileReader()
+            reader.onload = () => {
+                preview2.src = reader.result
+            }
+            const file = document.querySelector("#productImage2").files[0];
+            if (file) {
+                preview2.style.display = 'block'
+                reader.readAsDataURL(file)
+            }
+        }
+        function displayImage3() {
+            const reader = new FileReader()
+            reader.onload = () => {
+                preview3.src = reader.result
+            }
+            const file = document.querySelector("#productImage3").files[0];
+            if (file) {
+                preview3.style.display = 'block'
+                reader.readAsDataURL(file)
+            }
+        }
+    </script> -->
+
+
+
+
+
+
+    <%- include('../adminPartials/footer') %>

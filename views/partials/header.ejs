@@ -1,0 +1,259 @@
+<html lang="en">
+
+
+<!-- molla/index-10.html  22 Nov 2019 09:58:04 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DriveStyle </title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="DriveStyle - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="manifest" href="/assets/logo.png">
+    <link rel="mask-icon" href="/assets/logo.png" color="#666666">
+    <link rel="shortcut icon" href="/assets/logo.png">
+    <meta name="apple-mobile-web-app-title" content="DriveStyle">
+    <meta name="application-name" content="DriveStyle">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="/assets/images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="/assets/css/skins/skin-demo-10.css">
+    <link rel="stylesheet" href="/assets/css/demos/demo-10.css">
+
+    <script src="/assets/js/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header header-8">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-left">
+                        <div>
+                            <br><br><br><br>
+                        </div>
+                        <div class=>
+                            <a href="#"></a>
+                            <div>
+                                <!-- <ul>
+                                    <li><a href="#">Eur</a></li>
+                                    <li><a href="#">Usd</a></li>
+                                </ul> -->
+                            </div>
+                        </div>
+                        <!-- 
+                        <div class="header-dropdown">
+                            <a href="#">Eng</a>
+                            <div class="header-menu">
+                                <ul>
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">Spanish</a></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div><!-- End .header-left -->
+
+                    <div class="header-right">
+                        <ul class="top-menu">
+                            <li>
+                                <a href="#">Links</a>
+                                <ul>
+                                    <!-- <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li> -->
+                                    <!-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist
+                                      <span>(3)</span></a></li>  -->
+                                    <li><a href="/aboutus">About Us</a></li>
+
+
+
+
+
+
+                                    <% if (user) { %>
+                                        <li><a href="/logout">LOG OUT</a></li>
+
+
+
+                                        <li><a href="/profile/<%= user._id %>">PROFILE</a></li>
+
+
+
+                                        <% } else { %>
+                                            <li><a href="/loginpage">LOG IN & Sign UP</a></li>
+
+
+                                            <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                <!-- <li><a href="contact.html">Contact Us</a></li> -->
+                                                <!-- <li><a href="login.html" data-toggle="modal"><i class="icon-user"></i>Login</a></li> -->
+                                </ul>
+                            </li>
+                        </ul><!-- End .top-menu -->
+                    </div><!-- End .header-right -->
+                </div><!-- End .container -->
+            </div><!-- End .header-top -->
+
+            <div class="header-middle sticky-header">
+                <div class="container">
+
+
+
+                    <div class="header-left">
+                        <!-- <button class="mobile-menu-toggler">
+                            <span class="sr-only">Toggle mobile menu</span>
+                            <i class="icon-bars"></i>
+                        </button> -->
+
+                        <% if (user) { %>
+                            <a href="/home" class="sf-with-ul">
+                                <img src="/assets/logo.png" class="footer-logo" alt="DriveStyle Logo" width="155" height="35">
+                            </a>
+                            <% } else { %>
+                                <span class="sf-with-ul">
+                                    <img src="/assets/logo.png" class="footer-logo" alt="DriveStyle Logo" width="155"
+                                        height="35">
+                                </span>
+                                <% } %>
+                    </div><!-- End .header-left -->
+
+
+                    <div class="header-right">
+                        <div class="header-search">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <form action="/search" method="Post">
+                                <div class="header-search-wrapper">
+                                    <label for="q" class="sr-only">Search</label>
+                                    <input type="search" class="form-control" name="search" id="search"
+                                        placeholder="Search in..." required>
+                                </div><!-- End .header-search-wrapper -->
+
+                            </form>
+                        </div><!-- End .header-search -->
+
+
+
+                        <div class="dropdown cart-dropdown">
+
+
+
+                            <% if ( cartData.length>=0 && user) { %>
+
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" data-display="static">
+                                    <i class="icon-shopping-cart"></i>
+                                    <!-- <span class="cart-count">2</span> -->
+                                </a>
+
+
+                                <% } %>
+
+
+
+
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-cart-products">
+
+
+                                            <table>
+                                                <tbody>
+                                                    <% cartData.forEach(function(item) { %>
+                                                        <tr class="miniCartProduct">
+                                                            <td style="width: 30%" class="miniCartProductThumb">
+                                                                <div>
+                                                                    <a href="product-details.html">
+                                                                        <img src="/upload/<%= item.productId.productImage1 %>"
+                                                                            alt="img" />
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width: 40%">
+                                                                <div class="miniCartDescription">
+                                                                    <h9>
+                                                                        <a href="product-details.html">
+                                                                            <%= item.productId.productName %>
+                                                                        </a>
+                                                                    </h9>
+                                                                    <div class="price"><span> ₹<%=
+                                                                                item.productId.productPrice %> </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width: 15%" class="miniCartQuantity">
+                                                                <a> X <%= item.productQuantity %> </a>
+                                                            </td>
+                                                            <!-- <td style="width: 15%" class="miniCartSubtotal">
+                                                                <span> ₹<%= item.totalCostPerProduct %> </span>
+                                                            </td> -->
+                                                            <!-- <td style="width: 5%" class="delete"><a> x </a></td> -->
+                                                        </tr>
+                                                        <% }); %>
+                                                </tbody>
+                                            </table>
+
+                                        </div><!-- End .cart-product -->
+                                        <div>
+                                            <br>
+                                        </div>
+
+
+                                        <div class="dropdown-cart-action">
+                                            <a href="/cartPage" class="btn btn-primary">View Cart</a>
+                                            <a href="/checkout"
+                                                class="btn btn-outline-primary-2"><span>Checkout</span><i
+                                                    class="icon-long-arrow-right"></i></a>
+                                        </div><!-- End .dropdown-cart-total -->
+                                        
+                                        
+                                    </div><!-- End .dropdown-menu -->
+                        </div><!-- End .cart-dropdown -->
+
+                        <div>
+                            <br><br><br>
+                        </div>
+
+
+                        <!-- //------------------------------------------------------------------------------------------------------------------------------            -->
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div><!-- End .header-right -->
+                </div><!-- End .container -->
+            </div><!-- End .header-middle -->
+        </header><!-- End .header -->
